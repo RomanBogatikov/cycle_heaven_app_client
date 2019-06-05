@@ -24,9 +24,11 @@ const devConfig = {
 
 const config = process.env.NODE_ENV === 'production' ? prodConfig : devConfig;
 
+console.log('config=', config);
+
 class Firebase {
   constructor() {
-    console.log("firebase api", process.env.REACT_APP_API_KEY);
+
     app.initializeApp(config);
 
     this.auth = app.auth();
