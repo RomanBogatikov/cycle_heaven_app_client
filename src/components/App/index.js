@@ -28,6 +28,7 @@ class App extends Component {
 
   componentDidMount() {
     let existingCart = JSON.parse(localStorage.getItem('ch_bikes'));
+    console.log('existingCart=', existingCart);
     const numOfProductsInCart = existingCart.reduce( (accumulator, value) => {
       return accumulator+ value.quantity
     }, 0);
