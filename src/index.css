@@ -81,6 +81,7 @@ body {
 
   border: 1px solid black;
   margin-bottom: 1em;
+  padding: 0.7em;
 }
 
 .product:hover {
@@ -155,6 +156,7 @@ body {
   grid-row-start: 2;
   grid-row-end: 3;
 
+  margin: 0;
 }
 
 .departments > .react-ripples {
