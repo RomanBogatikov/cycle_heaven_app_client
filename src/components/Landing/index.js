@@ -29,8 +29,13 @@ const Button = styled.button`
 
 `;
 
+let URI;
 
-
+if (process.env.NODE_ENV === 'production') {
+  URI = process.env.BASE_URI + 'products';
+} else {
+  URI = '/products'
+}
 
 class Landing extends Component {
   constructor(props) {
@@ -46,7 +51,7 @@ class Landing extends Component {
   }
 
   getProducts() {
-    fetch('/products')
+    fetch(URI)
     .then(response => response.json())
     // .then(resJSON => console.log(resJSON))
     .then(resJSON => this.setState({
