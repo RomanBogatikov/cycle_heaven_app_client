@@ -58,7 +58,8 @@ class Landing extends Component {
     // .then(resJSON => console.log(resJSON))
     .then(resJSON => this.setState({
       products: resJSON,
-    }));
+    }))
+    .catch(err => console.log(err));
   }
 
   render() {

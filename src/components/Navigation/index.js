@@ -138,8 +138,8 @@ class NavigationNonAuth extends Component {
   // to display the number of items in the cart
   componentDidUpdate(prevProps, prevState) {
     // only update chart if the data has changed
-    console.log('prevProps.cart=', prevProps.cart);
-    console.log('this.props.cart=', this.props.cart)
+    // console.log('prevProps.cart=', prevProps.cart);
+    // console.log('this.props.cart=', this.props.cart)
     if (prevProps.cart !== this.props.cart) {
       this.setState({
         cart: this.props.cart,
