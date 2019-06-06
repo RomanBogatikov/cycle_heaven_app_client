@@ -32,7 +32,7 @@ const Button = styled.button`
 let URI;
 
 if (process.env.NODE_ENV === 'production') {
-  URI = process.env.BASE_URI + 'products';
+  URI = process.env.BASE_URI + '/products';
 } else {
   URI = '/products'
 }
