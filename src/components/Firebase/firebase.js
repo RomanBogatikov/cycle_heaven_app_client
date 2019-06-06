@@ -31,8 +31,8 @@ const config = {
 //   appID: process.env.REACT_APP_APP_ID,
 // }
 
-// if (process.env.NODE_ENV === 'production') {console.log('process.env.NODE_ENV=production') };
-// if (process.env.NODE_ENV === 'development') {console.log('process.env.NODE_ENV=development') };
+if (process.env.NODE_ENV === 'production') {console.log('process.env.NODE_ENV=production') };
+if (process.env.NODE_ENV === 'development') {console.log('process.env.NODE_ENV=development') };
 
 // const config = process.env.NODE_ENV === 'production' ? prodConfig : devConfig;
 
