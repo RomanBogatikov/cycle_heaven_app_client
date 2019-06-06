@@ -37,6 +37,8 @@ if (process.env.NODE_ENV === 'production') {
   URI = '/products'
 }
 
+console.log("URI=", URI);
+
 class Landing extends Component {
   constructor(props) {
     super(props);
