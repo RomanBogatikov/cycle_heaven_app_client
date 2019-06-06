@@ -53,7 +53,7 @@ class Landing extends Component {
   }
 
   getProducts() {
-    fetch(URI)
+    fetch('https://cycle-heaven-api.herokuapp.com/products')
     .then(response => response.json())
     // .then(resJSON => console.log(resJSON))
     .then(resJSON => this.setState({
