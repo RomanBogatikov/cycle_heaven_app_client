@@ -144,7 +144,4 @@ class BarChart extends Component {
   }
 }
 
-
-
-
 export default Statistics;
