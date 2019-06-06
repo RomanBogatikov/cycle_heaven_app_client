@@ -1,5 +1,5 @@
 // configure the Firebase for our app
-import app from 'firebase/app';
+import firebase from 'firebase/app';
 import 'firebase/auth';
 
 // const prodConfig = {
@@ -24,7 +24,26 @@ import 'firebase/auth';
 
 // const config = process.env.NODE_ENV === 'production' ? prodConfig : devConfig;
 
-const config = {
+// const config = {
+//   apiKey: process.env.REACT_APP_API_KEY,
+//   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+//   databaseURL: process.env.REACT_APP_DATABASE_URL,
+//   projectId: process.env.REACT_APP_PROJECT_ID,
+//   storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+//   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+//   appID: process.env.REACT_APP_APP_ID,
+// }
+
+const prodConfig = {
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appID: process.env.REACT_APP_APP_ID,
+}
+const devConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
   databaseURL: process.env.REACT_APP_DATABASE_URL,
@@ -34,14 +53,19 @@ const config = {
   appID: process.env.REACT_APP_APP_ID,
 }
 
-console.log('config=', config);
+
+
+if (process.env.NODE_ENV === 'production') {console.log('process.env.NODE_ENV=production') };
+if (process.env.NODE_ENV === 'development') {console.log('process.env.NODE_ENV=development') };
+
+const config = process.env.NODE_ENV === 'production' ? prodConfig : devConfig;
 
 class Firebase {
   constructor() {
 
-    app.initializeApp(config);
+    firebase.initializeApp(config);
 
-    this.auth = app.auth();
+    this.auth = firebase.auth();
   }
 
   // ***** Auth API *****
