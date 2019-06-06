@@ -38,7 +38,6 @@ if (process.env.NODE_ENV === 'development') {console.log('process.env.NODE_ENV=d
 
 class Firebase {
   constructor() {
-
     firebase.initializeApp(config);
 
     this.auth = firebase.auth();
