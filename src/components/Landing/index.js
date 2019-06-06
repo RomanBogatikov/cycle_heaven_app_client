@@ -37,7 +37,7 @@ if (process.env.NODE_ENV === 'production') {
   URI = '/products'
 }
 
-console.log("URI=", URI);
+// console.log("URI=", URI);
 
 class Landing extends Component {
   constructor(props) {
@@ -66,38 +66,11 @@ class Landing extends Component {
     return (
       <div className="landing">
         {/*<Departments products={products} />*/}
-        <Products products={products} />
+        <Products products={products} handleAdd={this.props.handleAdd}/>
       </div>
     );
   };
 };
-
-
-// class Departments extends Component {
-//   constructor(props) {
-//     super(props)
-//     this.state = {
-//       products: this.props.products,
-//     }
-//   }
-
-//   handleClick = (event) => {
-//     this.setState({
-//       products: this.props.products.filter( product => product.department ===  event.target.value)
-//     })
-//   }
-
-//   render() {
-//     return (
-//       <div className="departments">
-//       Shop by Department
-//         <input type="submit" value="Road Bicycles" onClick={ event => this.handleClick(event)}/>
-//         <input type="submit" value="Mountain Bicycles"/>
-//         <input type="submit" value="Touring Bicycles"/>
-//       </div>
-//     )
-//   };
-// };
 
 class Products extends Component {
   constructor(props) {
@@ -123,34 +96,33 @@ class Products extends Component {
     })
   }
 
-  handleAdd = (event, product) => {
+  // handleAdd = (event, product) => {
 
+  //   console.log('product=', product);
+  //   // get existing data
+  //   let existingCart = JSON.parse(localStorage.getItem('ch_bikes'));
+  //   console.log('existing=', existingCart)
+  //   if (existingCart === null) existingCart = [];
+  //   const id = product.id;
+  //   // find index of the product in localStorage array
+  //   const index = existingCart.findIndex(product => product.id === id);
+  //   // check if the product with the same id is already in the cart
+  //   if (index !== -1) {
+  //     // increase quantity
+  //     existingCart[index].quantity = ++existingCart[index].quantity;
+  //   } else {
+  //     // else push a new product into an array and set its quantity to 1
+  //     product.quantity = 1;
+  //     existingCart.push(product);
+  //   }
 
-    console.log('product=', product);
-    // get existing data
-    let existingCart = JSON.parse(localStorage.getItem('ch_bikes'));
-    console.log('existing=', existingCart)
-    if (existingCart === null) existingCart = [];
-    const id = product.id;
-    // find index of the product in localStorage array
-    const index = existingCart.findIndex(product => product.id === id);
-    // check if the product with the same id is already in the cart
-    if (index !== -1) {
-      // increase quantity
-      existingCart[index].quantity = ++existingCart[index].quantity;
-    } else {
-      // else push a new product into an array and set its quantity to 1
-      product.quantity = 1;
-      existingCart.push(product);
-    }
+  //   localStorage.setItem('ch_bikes', JSON.stringify(existingCart));
 
-    localStorage.setItem('ch_bikes', JSON.stringify(existingCart));
-
-    // product.cart_id = counter;
-    console.log('existing=', existingCart)
-    // // increase counter to give a unique cart_id to the next product moved to cart
-    // counter++;
-  }
+  //   // product.cart_id = counter;
+  //   console.log('existing=', existingCart)
+  //   // // increase counter to give a unique cart_id to the next product moved to cart
+  //   // counter++;
+  // }
 
   render() {
     let filteredList = [];
@@ -184,7 +156,7 @@ class Products extends Component {
         <div className="products">
 
           <input value={this.state.filterTextInput} onChange={this.handleChange} placeholder="Search by bicycle brand"/>
-          {filteredList.map( product => <Product product={product} key={product.id} handleClick={this.handleAdd} buttonLabel={'Add to cart'}/>)}
+          {filteredList.map( product => <Product product={product} key={product.id} handleClick={this.props.handleAdd} buttonLabel={'Add to cart'}/>)}
         </div>
 
       </React.Fragment>

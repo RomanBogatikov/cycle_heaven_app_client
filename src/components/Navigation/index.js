@@ -12,63 +12,6 @@ import * as ROUTES from '../../constants/routes'
 import { AuthUserContext } from '../Session';
 
 
-// const Navigation = () => (
-//   <div className="navbar">
-//     <span className="navbar-toggle" id="js-navbar-toggle">
-//       <FontAwesomeIcon icon={faBars}></FontAwesomeIcon>
-//     </span>
-//     <a href="/#" className="logo">logo</a>
-//     <AuthUserContext.Consumer>
-//     {authUser =>
-//       authUser
-//         ? <NavigationAuth />
-//         : <NavigationNonAuth />
-//     }
-//     </AuthUserContext.Consumer>
-//   </div>
-// );
-
-
-// const NavigationAuth = () => (
-//   <React.Component>
-//     <ul className="main-nav" id="js-menu">
-//       <li>
-//         <Link to={ROUTES.LANDING} className="nav-links">Landing</Link>
-//       </li>
-//       <li>
-//         <Link to={ROUTES.HOME} className="nav-links">Home</Link>
-//       </li>
-//       <li>
-//         <Link to={ROUTES.ACCOUNT} className="nav-links">Account</Link>
-//       </li>
-//       <li>
-//         <Link to={ROUTES.ADMIN} className="nav-links">Admin</Link>
-//       </li>
-//       <li>
-//         <SignOutButton />
-//       </li>
-//       <li>
-//         <Link to={ROUTES.CART} className="nav-links">Cart</Link>
-//       </li>
-//     </ul>
-
-//   </React.Component>
-// );
-
-// const NavigationNonAuth = () => (
-//   <ul className="main-nav" id="js-menu">
-//     <li>
-//       <Link to={ROUTES.LANDING} className="nav-links">Landing</Link>
-//     </li>
-//     <li>
-//       <Link to={ROUTES.CART} className="nav-links">Cart</Link>
-//     </li>
-//     <li>
-//       <Link to={ROUTES.SIGN_IN} className="nav-links">Sign In</Link>
-//     </li>
-//   </ul>
-// )
-
 class Navigation extends Component {
   constructor(props) {
     super(props)
@@ -87,8 +30,8 @@ class Navigation extends Component {
       <AuthUserContext.Consumer>
         {authUser =>
           authUser
-            ? <NavigationAuth />
-            : <NavigationNonAuth />
+            ? <NavigationAuth cart={this.props.cart} />
+            : <NavigationNonAuth cart={this.props.cart} />
         }
       </AuthUserContext.Consumer>
     );
@@ -100,6 +43,20 @@ class NavigationAuth extends Component {
     super(props)
     this.state = {
       isOpen: false,
+      cart: this.props.cart,
+    }
+  }
+
+  // to display the number of items in the cart
+  componentDidUpdate(prevProps, prevState) {
+    // only update chart if the data has changed
+    console.log('prevProps.cart=', prevProps.cart);
+    console.log('this.props.cart=', this.props.cart)
+    if (prevProps.cart !== this.props.cart) {
+      this.setState({
+        cart: this.props.cart,
+      });
+      return true;
     }
   }
 
@@ -118,7 +75,7 @@ class NavigationAuth extends Component {
       <MDBNavbar color="default-color" dark expand="md">
 
         <MDBNavbarBrand>
-          <strong className="white-text">LOGO</strong>
+          <MDBNavLink to={ROUTES.LANDING}><img src="http://clipart-library.com/images/pco5nadxi.png" alt="logo" className="logo"/></MDBNavLink>
         </MDBNavbarBrand>
 
         <MDBNavbarToggler onClick={this.toggleCollapse} />
@@ -142,6 +99,7 @@ class NavigationAuth extends Component {
           <MDBNavbarNav right>
             <MDBNavItem>
               <MDBNavLink className="waves-effect waves-light" to={ROUTES.CART}>
+                <span>{this.state.cart}</span>
                 <MDBIcon icon="shopping-cart" />
               </MDBNavLink>
             </MDBNavItem>
@@ -173,6 +131,20 @@ class NavigationNonAuth extends Component {
     this.state = {
       isOpen: false,
       pathname: '/',
+      cart: this.props.cart,
+    }
+  }
+
+  // to display the number of items in the cart
+  componentDidUpdate(prevProps, prevState) {
+    // only update chart if the data has changed
+    console.log('prevProps.cart=', prevProps.cart);
+    console.log('this.props.cart=', this.props.cart)
+    if (prevProps.cart !== this.props.cart) {
+      this.setState({
+        cart: this.props.cart,
+      });
+      return true;
     }
   }
 
@@ -180,14 +152,15 @@ class NavigationNonAuth extends Component {
     this.setState({ isOpen: !this.state.isOpen });
   }
 
+  // function to highlight the routes in the navbar that the user is on
   handleHighlight = (event) => {
-    console.log(event.target.pathname)
+    // console.log(event.target.pathname)
     this.setState({ pathname: event.target.pathname });
   }
 
 
 render() {
-  console.log('window.location.pathname=', window.location.pathname)
+  // console.log('window.location.pathname=', window.location.pathname)
   return (
     <MDBNavbar color="default-color" dark expand="md">
       <MDBNavbarBrand>
@@ -211,6 +184,7 @@ render() {
         <MDBNavbarNav right>
           <MDBNavItem>
             <MDBNavLink className="waves-effect waves-light" to={ROUTES.CART}>
+              <span>{this.state.cart}</span>
               <MDBIcon icon="shopping-cart" />
             </MDBNavLink>
           </MDBNavItem>

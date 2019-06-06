@@ -186,6 +186,13 @@ div.dropdown-menu.show.dropdown-default {
   padding: 0;
 }
 
+/* style checkout button in the Cart */
+.checkout {
+  display: flex;
+  justify-content: center;
+}
+
+
 
 
 /* Navigation */

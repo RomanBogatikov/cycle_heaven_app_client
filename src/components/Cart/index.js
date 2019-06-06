@@ -1,16 +1,44 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import { withRouter } from 'react-router-dom';
+import Ripples from 'react-ripples';
 
 import * as ROUTES from '../../constants/routes';
 import { Product } from '../Landing';
 
-const CartPage = () => (
-  <React.Fragment>
-    <h1>Cart</h1>
-    <Cart />
-    <CheckoutForm />
-  </React.Fragment>
-)
+const Button = styled.button`
+
+  cursor: pointer;
+  background: transparent;
+  font-size: 16px;
+  border-radius: 3px;
+  color: ${props => (props.primary ? 'violet' : 'palevioletred')};
+  border: ${props =>
+    props.primary ? '2px solid violet' : '2px solid palevioletred'};
+  margin-bottom: 1em;
+  padding: 0.25em 1em;
+  transition: 0.5s all ease-out;
+
+  &:hover {
+    color: white;
+    background-color: ${props =>
+      props.primary ? 'violet' : 'palevioletred'};
+  }
+
+  &:focus {outline:0;}
+
+`;
+
+const CartPage = (props) => {
+  console.log('props in cartpage=', props);
+  return (
+    <React.Fragment>
+      <h1>Cart</h1>
+      <Cart handleCartDisplayOnRemove={props.handleCartDisplayOnRemove}/>
+      <CheckoutForm />
+    </React.Fragment>
+  )
+}
 
 class Cart extends Component {
   constructor(props) {
@@ -65,8 +93,16 @@ class Cart extends Component {
       })
     )
 
+    const filteredCartProdNumber = filteredCart.reduce( (accumulator, product) => {
+      return accumulator + product.quantity
+    }, 0);
+
     // save new array to localStorage
     localStorage.setItem('ch_bikes', JSON.stringify(filteredCart));
+
+    console.log('this.props=', this.props);
+
+    this.props.handleCartDisplayOnRemove(filteredCartProdNumber)
 
   }
 
@@ -114,8 +150,11 @@ class CheckoutFormBase extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <button type="submit">Check Out</button>
+      <form onSubmit={this.handleSubmit} className="checkout">
+        {/*<button type="submit">Check Out</button>*/}
+        <Ripples color="#fff" during={1200}>
+          <Button value="Check Out" type="submit">Check Out</Button>
+      </Ripples>
       </form>
     )
   }
