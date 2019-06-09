@@ -1,11 +1,11 @@
 # Cycle Heaven
 
-# Link to Cycle Heaven app: ![Cycle Heaven](https://cycle-heaven.herokuapp.com/)
+# Link to Cycle Heaven app: [Cycle Heaven](https://cycle-heaven.herokuapp.com/)
 
 
 ## Front End Overview
 
-Cycle Heaven ![Back End Overview](https://github.com/RomanBogatikov/cycle_heaven_app_api)
+Cycle Heaven [Back End Overview](https://github.com/RomanBogatikov/cycle_heaven_app_api)
 
 
 
