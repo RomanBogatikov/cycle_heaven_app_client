@@ -11,8 +11,6 @@ Cycle Heaven [Back End Overview](https://github.com/RomanBogatikov/cycle_heaven_
 
 Cycle Heaven is an online store for selling bicycles.
 
-
-
 ### Technologies Used:
 
 * ReactJS (including advanced features like: Context, Session Handling with Higher Order Components, Protected Routes with Authorization, Code Splitting)
@@ -32,6 +30,10 @@ Cycle Heaven is an online store for selling bicycles.
 * Firebase to manage users (authenticate, authorize, store sensitive information)
 * PostgreSQL to store products (set up many-to-many relationship between all available bicycles and bicycles in each user's cart)
 
+## Future Improvements
+
+* Finish back end logic (update the number of bicycles bought in the database when the user)
+* Make a chart dynamic (so that it updates when any user clicks on a check out button)
 
 ## User stories:
 
