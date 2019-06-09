@@ -32,7 +32,7 @@ Cycle Heaven is an online store for selling bicycles.
 
 ## Future Improvements
 
-* Finish back end logic (update the number of bicycles bought in the database when the user)
+* Finish back end logic (update the number of bicycles bought in the database when the user, create new user in PostgreSQL when new user signs up)
 * Make a chart dynamic (so that it updates when any user clicks on a check out button)
 
 ## User stories:
