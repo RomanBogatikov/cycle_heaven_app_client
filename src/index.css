@@ -80,11 +80,8 @@ body {
   grid-template-columns: 4;
 
   border: 1px solid black;
-  margin-bottom: 1em;
+  margin-bottom: 2em;
   padding: 0.7em;
-}
-
-.product:hover {
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.9);
 }
 
@@ -125,7 +122,7 @@ body {
 
 .cart_button {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
 }
 
@@ -133,6 +130,11 @@ body {
   border: 2px solid orange;
   border-radius: 7px;
 }
+
+.cart_button > .react-ripples:hover {
+  box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.9);
+}
+
 
 .add_to_cart_btn {
   padding: 0.5em;
@@ -144,6 +146,7 @@ body {
   background: rgb(247, 200, 99);
   font-size: 14px;
 }
+
 
 .add_to_cart_btn:active,
 .add_to_cart_btn:focus {
@@ -194,7 +197,43 @@ div.dropdown-menu.show.dropdown-default {
   justify-content: center;
 }
 
+/* Bicycle wheel animation */
+.wheel_container {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
+  align-items: center;
+  margin: 0 auto;
+}
+
+.wheel {
+position: relative;
+transform-origin: 50% 50%;
+animation: 3s linear 0s infinite spin;
+/* flex-grow: 1; */
+}
+
+@keyframes spin {
+from {
+  transform: rotate(0deg);
+
+}
+to   {
+  transform: rotate(360deg);
+
+}
+}
+
+@keyframes move {
+from {
+  transform: flex-grow(0);
+}
+to {
+  transform: flex-grow(1);
+}
+}
 
 
 /* Navigation */

@@ -17,10 +17,12 @@ import * as ROUTES from '../../constants/routes';
 // import { AuthUserContext } from '../Session';
 import { withAuthentication } from '../Session'
 import PayForPurchase from '../PayForPurchase';
+import BicyclePage from '../Bicycle';
 
 class App extends Component {
   constructor(props) {
     super(props)
+    // to display number of products next to cart
     this.state = {
       cart: '',
     }
@@ -92,7 +94,7 @@ class App extends Component {
         <div>
           <Navigation cart={this.state.cart}/>
 
-          <Route exact path={ROUTES.LANDING} render={(props) => <LandingPage {...props} handleAdd={this.handleAdd} />}/>
+          <Route exact path={ROUTES.LANDING} render={(props) => <LandingPage {...props} handleAdd={this.handleAdd} cart={this.state.cart} />}/>
           <Route exact path={ROUTES.SIGN_UP} component={SignUpPage} />
           <Route exact path={ROUTES.CART} render={(props) => <CartPage {...props} handleCartDisplayOnRemove={this.handleCartDisplayOnRemove} />}/>
           <Route exact path={ROUTES.SIGN_IN} component={SignInPage} />
@@ -102,6 +104,7 @@ class App extends Component {
           <Route exact path={ROUTES.ADMIN} component={AdminPage} />
           <Route exact path={ROUTES.PAYFORPURCHASE} component={PayForPurchase} />
           <Route exact path={ROUTES.STATISTICS} component={StatisticsPage} />
+          <Route exact path={ROUTES.BICYCLE} component={BicyclePage} />
         </div>
       </Router>
       // );
