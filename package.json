@@ -1,7 +1,6 @@
 {
   "name": "cycle_haven_client",
   "version": "0.1.0",
-  "proxy": "http://localhost3001",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.19",
