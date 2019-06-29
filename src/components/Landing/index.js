@@ -16,6 +16,16 @@ class Landing extends Component {
     };
   }
 
+  // shouldComponentUpdate is needed to prevent re-rendering Landing page, eliminating unnecessary fetch request of bicycyles from the database
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.props.cart !== nextProps.cart) {
+      return false;
+    } else {
+      return true;
+
+    }
+  }
+
   // fetch products when component mounts
   componentDidMount() {
     this.getProducts();
