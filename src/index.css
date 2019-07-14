@@ -196,7 +196,11 @@ div.dropdown-menu.show.dropdown-default {
   padding: 0;
 }
 
-
+@media (max-width: 48rem) {
+  p.description {
+    display: none;
+  }
+}
 
 /* style checkout button in the Cart */
 .checkout {
