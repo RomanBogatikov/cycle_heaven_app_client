@@ -65,7 +65,7 @@ class NavigationAuth extends Component {
   }
 
   handleHighlight = (event) => {
-    console.log(event.target.pathname)
+    console.log('event=', event.target.pathname)
     this.setState({ pathname: event.target.pathname });
   }
 
@@ -75,7 +75,7 @@ class NavigationAuth extends Component {
       <MDBNavbar color="default-color" dark expand="md">
 
         <MDBNavbarBrand>
-          <MDBNavLink to={ROUTES.LANDING}><img src="http://clipart-library.com/images/pco5nadxi.png" alt="logo" className="logo"/></MDBNavLink>
+            <MDBNavLink to={ROUTES.LANDING}><img src="http://clipart-library.com/images/pco5nadxi.png" alt="logo" className="logo"/></MDBNavLink>
         </MDBNavbarBrand>
 
         <MDBNavbarToggler onClick={this.toggleCollapse} />
@@ -154,8 +154,12 @@ class NavigationNonAuth extends Component {
 
   // function to highlight the routes in the navbar that the user is on
   handleHighlight = (event) => {
-    // console.log(event.target.pathname)
-    this.setState({ pathname: event.target.pathname });
+    console.log('event.target=', event.target.className)
+    if (event.target.className === 'logo') {
+      this.setState({ pathname: '/'})
+    } else {
+      this.setState({ pathname: event.target.pathname });
+    }
   }
 
 
@@ -163,7 +167,7 @@ render() {
   // console.log('window.location.pathname=', window.location.pathname)
   return (
     <MDBNavbar color="default-color" dark expand="md">
-      <MDBNavbarBrand>
+      <MDBNavbarBrand onClick={(event) => this.handleHighlight(event)}>
         <MDBNavLink to={ROUTES.LANDING}><img src="http://clipart-library.com/images/pco5nadxi.png" alt="logo" className="logo"/></MDBNavLink>
       </MDBNavbarBrand>
 
